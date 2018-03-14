@@ -1,4 +1,4 @@
-package com.github.prkaspars
+package com.github.prkaspars.sudoku.util
 
 import scala.io.Source
 
@@ -7,8 +7,7 @@ trait PuzzleSource {
   def fromResource(resource: String): List[Byte] =
     Source.fromResource(resource)
       .getLines
-      .map(_.split(" ").toList)
-      .flatten
+      .flatMap(_.split(" ").toList)
       .map(_.trim)
       .filterNot(_.isEmpty)
       .map(_.toByte)
